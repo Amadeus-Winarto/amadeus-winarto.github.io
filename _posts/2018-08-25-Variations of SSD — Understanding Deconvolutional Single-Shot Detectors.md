@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 ---
 <h1> Introduction to SSD </h1>
 <p>
