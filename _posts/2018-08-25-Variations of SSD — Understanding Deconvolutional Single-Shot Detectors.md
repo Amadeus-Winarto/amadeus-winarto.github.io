@@ -6,9 +6,12 @@ layout: posts
 Single-shot MultiBox Detector is a one-stage object detection algorithm. This means that, in contrast to two-stage models, SSDs do not need an initial object proposals generation step. This makes it, usually, faster and more efficient than two-stage approaches such as Faster R-CNN, although it sacrifices performance for detection of small objects to gain speed.
   
 Figure 1: Architecture of SSD
+
 In the original paper for SSD, the authors proposed the use of preset anchor boxes to replace regional proposal generation. Furthermore, to account for different object sizes, SSD uses more than one feature map for detection. In the diagram shown above, 6 feature maps are used: Conv4_3, Conv7, Conv8_2, Conv9_2, Conv10_2, and Conv11_2.
+
 Despite SSD’s astonishing performance, it (greatly) suffers from missed detection for small objects. This is because smaller objects — typically defined as less than 36x36 in an image — would have been shrunk tremendously after being passed through multiple pooling layers. Hence, the detection part in SSD does not have enough spatial information to discern small objects.
 Deconvolutional Single-Shot Detector (DSSD)
+
 SSD consists of feature extraction and detection. In order to achieve greater performance, Deconvolutional Single-Shot Detector was proposed to improve both parts. Firstly, the authors introduce the use of ResNet-101, a state-of-the-art classifier at the time, as a feature extractor instead of VGGNet as used in the original paper. Also, deconvolutional layers are used in the detection part to increase the resolution of the feature maps produced by the feature extractor. This would theoretically allow for better detection of small objects by providing additional large-scale context.
 The authors noted, however, that “naive implementation does not succeed”. To solve this, they crafted a deconvolution module and a prediction module, thus enabling the effective use of deconvolutional layers and ResNet-101
 
