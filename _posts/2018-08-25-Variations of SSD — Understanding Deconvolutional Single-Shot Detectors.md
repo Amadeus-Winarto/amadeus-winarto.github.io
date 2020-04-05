@@ -21,13 +21,16 @@ SSD consists of feature extraction and detection. In order to achieve greater pe
 The authors noted, however, that “naive implementation does not succeed”. To solve this, they crafted a deconvolution module and a prediction module, thus enabling the effective use of deconvolutional layers and ResNet-101
 
 ![DSSD vs SSD](../imgs/DSSD/dssd2.png "DSSD vs SSD")
-*Figure 2: Side-by-side comparison of DSSD and SSD. Top image is the architecture of SSD whereas the bottom image is the architecture of DSSD*
+|:--:| 
+| *Figure 2: Side-by-side comparison of DSSD and SSD. Top image is the architecture of SSD whereas the bottom image is the architecture of DSSD* |
 
 ### ResNet-101 vs VGG-19
 In image classification tasks, residual networks have been proven to be better than VGG as it provides skip-connections between convolutional blocks, thus diminishing the effects of vanishing gradient, allowing networks to go deeper. In fact, ResNets typically can go up to 101 layers whereas VGG networks can only go up to 19. Since deeper networks are usually better for image classification, ResNets are generally more accurate than VGG.
 
 ![ResNet vs VGG](../imgs/DSSD/resnetvsvgg.png "VGG-19 vs ResNet-34")
-*Figure 3: VGG-19 vs ResNet-34*
+|:--:| 
+| *Figure 3: VGG-19 vs ResNet-34* |
+
 However, simply replacing the VGG-based feature extractor in SSD with ResNet-101 does not lead to greater performance. Hence, a custom-made prediction module is needed.
 
 ### Prediction Module
@@ -35,7 +38,8 @@ In the original SSD architecture, the feature maps are barely processed before a
 To tackle this problem, DSSD uses prediction modules (PMs) that would do the necessary processing of feature maps which would lead to good classification. The feature extractor thus only need to learn how to best represent information from the image. Furthermore, because the PMs for different scales are independent of each other, they are able to learn the transformations specific to their scale.
 
 ![Variations of Prediction Modules](../imgs/DSSD/VarPred.png "Variations of Prediction Modules")
-*Figure 4: Variations of Prediction Modules tested by the authors*
+|:--:| 
+| *Figure 4: Variations of Prediction Modules tested by the authors* |
 As shown in the ablation study on Pascal VOC 2007 done by the authors, SSD with prediction module variant C gives a higher mAP of 77.1 compared to Vanilla SSD (prediction module variant A) with an mAP of 76.9, thus proving that PMs help to boost performance.
 
 ### Deconvolution Module
