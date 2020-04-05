@@ -5,4 +5,11 @@ title: Notes on AI
 <div class="blurb">
 	<h1>Just Another Webiste on the Internet</h1>
 	<p>This webpage is to keep track of my notes on AI since 2020. <a href="/about">Read more about my life...</a></p>
+	
+	<ul class="posts">
+{% for post in site.posts %}
+	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	  {% endfor %}
+	</ul>
+	
 </div><!-- /.blurb -->
