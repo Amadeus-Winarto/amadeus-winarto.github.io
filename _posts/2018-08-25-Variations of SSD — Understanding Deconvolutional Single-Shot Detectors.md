@@ -6,7 +6,7 @@ title: Variations of SSD — Understanding Deconvolutional Single-Shot Detec
 
 Single-shot MultiBox Detector is a one-stage object detection algorithm. This means that, in contrast to two-stage models, SSDs do not need an initial object proposals generation step. This makes it, usually, faster and more efficient than two-stage approaches such as Faster R-CNN, although it sacrifices performance for detection of small objects to gain speed.
 
-![Architecture of SSD](https://github.com/Amadeus-Winarto/amadeus-winarto.github.io/blob/master/imgs/ssd.png "Architecture of SSD")
+![Architecture of SSD](https://github.com/Amadeus-Winarto/amadeus-winarto.github.io/blob/master/imgs/DSSD/ssd.png "Architecture of SSD")
 *"Figure 1: Architecture of SSD"*
 
 In the original paper for SSD, the authors proposed the use of preset anchor boxes to replace regional proposal generation. Furthermore, to account for different object sizes, SSD uses more than one feature map for detection. In the diagram shown above, 6 feature maps are used: Conv4_3, Conv7, Conv8_2, Conv9_2, Conv10_2, and Conv11_2.
