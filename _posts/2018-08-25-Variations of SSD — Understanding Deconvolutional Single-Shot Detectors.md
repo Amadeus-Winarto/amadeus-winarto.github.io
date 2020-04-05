@@ -1,7 +1,7 @@
 ---
 layout: posts
-title: Variations of SSD — Understanding Deconvolutional Single-Shot Detectors
 ---
+# Variations of SSD — Understanding Deconvolutional Single-Shot Detectors
 ## Introduction to SSD
 
 Single-shot MultiBox Detector is a one-stage object detection algorithm. This means that, in contrast to two-stage models, SSDs do not need an initial object proposals generation step. This makes it, usually, faster and more efficient than two-stage approaches such as Faster R-CNN, although it sacrifices performance for detection of small objects to gain speed.
