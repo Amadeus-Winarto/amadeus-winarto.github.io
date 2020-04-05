@@ -19,13 +19,13 @@ Despite SSD’s astonishing performance, it (greatly) suffers from missed detect
 SSD consists of feature extraction and detection. In order to achieve greater performance, Deconvolutional Single-Shot Detector was proposed to improve both parts. Firstly, the authors introduce the use of ResNet-101, a state-of-the-art classifier at the time, as a feature extractor instead of VGGNet as used in the original paper. Also, deconvolutional layers are used in the detection part to increase the resolution of the feature maps produced by the feature extractor. This would theoretically allow for better detection of small objects by providing additional large-scale context.
 The authors noted, however, that “naive implementation does not succeed”. To solve this, they crafted a deconvolution module and a prediction module, thus enabling the effective use of deconvolutional layers and ResNet-101
 
-![DSSD vs SSD](https://github.com/Amadeus-Winarto/amadeus-winarto.github.io/blob/master/imgs/DSSD/dssd2.png "DSSD vs SSD")
+![DSSD vs SSD](../imgs/DSSD/dssd2.png "DSSD vs SSD")
 *Figure 2: Side-by-side comparison of DSSD and SSD. Top image is the architecture of SSD whereas the bottom image is the architecture of DSSD*
 
 ### ResNet-101 vs VGG-19
 In image classification tasks, residual networks have been proven to be better than VGG as it provides skip-connections between convolutional blocks, thus diminishing the effects of vanishing gradient, allowing networks to go deeper. In fact, ResNets typically can go up to 101 layers whereas VGG networks can only go up to 19. Since deeper networks are usually better for image classification, ResNets are generally more accurate than VGG.
 
-![ResNet vs VGG](https://github.com/Amadeus-Winarto/amadeus-winarto.github.io/blob/master/imgs/DSSD/resnetvsvgg.png "VGG-19 vs ResNet-34")
+![ResNet vs VGG](../imgs/DSSD/resnetvsvgg.png "VGG-19 vs ResNet-34")
 *Figure 3: VGG-19 vs ResNet-34*
 However, simply replacing the VGG-based feature extractor in SSD with ResNet-101 does not lead to greater performance. Hence, a custom-made prediction module is needed.
 
@@ -33,14 +33,14 @@ However, simply replacing the VGG-based feature extractor in SSD with ResNet-101
 In the original SSD architecture, the feature maps are barely processed before a loss function is applied to it. This means that the layers in the feature extractor must learn to generate feature maps that not only represent the spatial and semantic information from the previous layers, but also the transformations that lead to good classification. Since different branches in SSD correspond to different scales, it may need to undo previous transformations before applying the one that works best for its scale.
 To tackle this problem, DSSD uses prediction modules (PMs) that would do the necessary processing of feature maps which would lead to good classification. The feature extractor thus only need to learn how to best represent information from the image. Furthermore, because the PMs for different scales are independent of each other, they are able to learn the transformations specific to their scale.
 
-![Variations of Prediction Modules](https://github.com/Amadeus-Winarto/amadeus-winarto.github.io/blob/master/imgs/DSSD/VarPred.png "Variations of Prediction Modules")
+![Variations of Prediction Modules](../imgs/DSSD/VarPred.png "Variations of Prediction Modules")
 *Figure 4: Variations of Prediction Modules tested by the authors*
 As shown in the ablation study on Pascal VOC 2007 done by the authors, SSD with prediction module variant C gives a higher mAP of 77.1 compared to Vanilla SSD (prediction module variant A) with an mAP of 76.9, thus proving that PMs help to boost performance.
 
 ### Deconvolution Module
 To achieve better accuracy, deconvolutional layers are used to increase the resolution of feature maps. The detection is then done using the “super-resolved” feature maps. In addition, to integrate information from earlier feature maps, deconvolutional modules are used.
 
-![Deconvolutional Module](https://github.com/Amadeus-Winarto/amadeus-winarto.github.io/blob/master/DSSD/imgs/Deconv.png "Deconvolutional Module")
+![Deconvolutional Module](../imgs/DSSD/Deconv.png "Deconvolutional Module")
 *Figure 5: Deconvolution Module*
 
 Technically, deconvolutional layers need not be used at all. Upsampling followed by a convolutional layer can also achieve the desired effect. However, since upsampling layers do not have any learnable parameters, it may not lead to the optimum results. Hence, deconvolutional layers are used.
@@ -48,7 +48,7 @@ Technically, deconvolutional layers need not be used at all. Upsampling followed
 ### Overall Architecture
 DSSD utilises the generated feature maps from deconvolutional modules in order to make use of the increased resolution. Prediction Modules are thus attached after Deconvolution Modules.
 
-![DSSD Architecture](https://github.com/Amadeus-Winarto/amadeus-winarto.github.io/blob/master/imgs/DSSD/Overall.png "DSSD Architecture")
+![DSSD Architecture](../imgs/DSSD/Overall.png "DSSD Architecture")
 *Figure 6: DSSD Architecture*
 
 A note-worthy observation is that DSSD looks awfully similar to an auto-encoder architecture. In fact, the authors mentioned that they drew inspiration from the Stacked Hourglass Model, which has a similar architecture to an auto-encoder. However, the Decoder stage is shorter than the Encoder part due to considerations for detection speed, computational resources and the lack of existing models for decoders trained on the task of image classification.
