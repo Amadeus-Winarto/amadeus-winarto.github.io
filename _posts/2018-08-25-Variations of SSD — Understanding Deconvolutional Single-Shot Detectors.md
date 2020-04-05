@@ -1,5 +1,6 @@
 ---
 layout: posts
+title: Variations of SSD — Understanding Deconvolutional Single-Shot Detectors
 ---
 # Variations of SSD — Understanding Deconvolutional Single-Shot Detectors
 ## Introduction to SSD
