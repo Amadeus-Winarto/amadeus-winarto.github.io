@@ -29,8 +29,9 @@ The authors noted, however, that “naive implementation does not succeed”. To
 
 ### ResNet-101 vs VGG-19
 In image classification tasks, residual networks have been proven to be better than VGG as it provides skip-connections between convolutional blocks, thus diminishing the effects of vanishing gradient, allowing networks to go deeper. In fact, ResNets typically can go up to 101 layers whereas VGG networks can only go up to 19. Since deeper networks are usually better for image classification, ResNets are generally more accurate than VGG.
-
-![ResNet vs VGG](../imgs/DSSD/resnetvsvgg.png "VGG-19 vs ResNet-34")
+<div style="text-align:center">
+  <img src="../imgs/DSSD/resnetvsvgg.png" alt="VGG-19 vs ResNet-34">
+ </div>
 <div align="center" markdown="1">
 *Figure 3: VGG-19 vs ResNet-34*
 </div>
