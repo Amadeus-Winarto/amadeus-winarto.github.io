@@ -4,7 +4,7 @@ title: Gosh, Why Must This Page Exist??
 ---
 # Gosh, Why Must This Page Exist??
 <div style='text-align:left'>
-<img src="../imgs/profile/dog.webp"
+<img src="../imgs/profile/dog.webp">
 </div>
 Well, I guess I cannot escape this.. Hmm, who am I? I am currently waiting for matriculation into National University of Singapore (NUS). Guess which major I applied to. I have been working with deep learning since 2018 as part of my research project in school. Ever since then, I've been more or less hooked on deep learning, especially computer vision.
 
