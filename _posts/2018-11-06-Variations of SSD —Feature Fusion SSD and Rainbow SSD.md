@@ -69,6 +69,6 @@ However, a ResNet-based FSSD was not used by the authors of the paper. Thus, it 
 # Conclusion
 As shown by FSSD and RSSD, it appears that single-stage detectors can also benefit from an improved feature pyramid through the different processing of feature maps and its concatenation before prediction. This may open up more possibilities into building better and faster object detectors.
 
-#References
+# References
 - Jeong, Jisoo, Hyojin Park and Nojun Kwak. “Enhancement of SSD by concatenating feature maps for object detection.” CoRR abs/1705.09587 (2017): n. pag.
 - Li, Zuoxin and Fuqiang Zhou. “FSSD: Feature Fusion Single Shot Multibox Detector.” CoRR abs/1712.00960 (2017): n. pag.
