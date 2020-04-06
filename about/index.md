@@ -2,8 +2,8 @@
 layout: posts
 title: Gosh, Why Must This Page Exist??
 ---
-# Gosh, Why Must This Page Exist??
-Well, I guess I cannot escape this.. Hmm, who am I? I am currently waiting for matriculation into National University of Singapore (NUS). Guess which major I applied to. I have been working with deep learning since 2018 as part of my research project in school. Ever since then, I've been more or less hooked on deep learning, especially computer vision.
+# About Me
+Well, I guess I cannot escape this.. My name is Amadeus Winarto, and I am currently waiting for matriculation into School of Computing in National University of Singapore (NUS). I have been working with deep learning since 2018 as part of my research project in school.
 <div style='float'>
 <img src="../imgs/profile/dog.webp" width="25%" height="25%">
 </div>
