@@ -8,11 +8,18 @@ The use of single-shot object detectors has been hailed as a faster and more eff
 The authors of the DSOD paper made the following principles to design an object detector:
 ### Proposal-free
 There are three types of object detectors in general. Firstly, R-CNN and Fast R-CNN that use external proposal generator, for example, the Selective Search algorithm, to propose objects. Secondly, Faster R-CNN and R-FPN that use integrated proposal generator like the Regional Proposal Network (RPN) to generate proposals. Lastly, SSD and YOLO that are proposal-free by reframing localisation into a regression problem, that is, predicting the offsets of the anchor boxes from the objects’ actual bounding box
+![Localisation](../imgs/DSOD/Localisation.png "Localisation in Proposal-Free Detectors")
+<div align="center" markdown="1">
+*Figure 1: Localisation in Proposal-Free detectors. The detector only need to classify which anchor boxes (grey striped lines) contain the desired object. Then, the localisation part of the detector will determine how best to resize the anchor boxes to properly fit the object i.e. predicting offsets.*
+</div>
 
-Figure 1: Localisation in Proposal-Free detectors. The detector only need to classify which anchor boxes (grey striped lines) contain the desired object. Then, the localisation part of the detector will determine how best to resize the anchor boxes to properly fit the object i.e. predicting offsets.
 The authors observed that to train an object detector from scratch, models that are proposal-free should be used. This is because of the use of backpropagation to update network parameters. In models that use object proposals, a type of Region of Interest Pooling layer is typically used. However, this layer prevents good gradient flow that is necessary to train an entire object detector from scratch. Hence, DSOD uses SSD as a framework.
 
-Figure 2: Faster R-CNN with RPN(left) vs SSD without RPN (right).
+![RegionProposal](../imgs/DSOD/RegionProposal.png "RPN")
+<div align="center" markdown="1">
+*Figure 2: Faster R-CNN with RPN(left) vs SSD without RPN (right).*
+</div>
+
 ### Deep Supervision
 Deep Supervision (DS) was a concept developed to tackle the problem of vanishing gradient. In deep networks, the flow of gradient can be stunted if it is too small. This is because of the way gradient descent is implemented; weights are updated based on the partial derivatives of the loss function with respect to the current weights for each layer.
 This is computed using the partial derivatives for previous layers closer to the loss function through the chain rule, which involves multiplication.
@@ -23,15 +30,22 @@ While DS was originally executed explicitly by attaching auxiliary losses, such 
 The transition without pooling layers are layers between dense blocks. The layer does the batch normalization operation, followed by a 1x1 convolution.
 As its name suggests, the layer lacks the 2x2 average pooling layer compared to the transition layer used in DenseNet.
 In DenseNet, the number of dense blocks is fixed to 4 to maintain the same scale of outputs. The only way to increase network depth is adding layers inside each block for the original DenseNet. The transition w/o pooling layer circumvents this restriction, allowing for more dense blocks to be used.
+![DenseNet](../imgs/DSOD/Dense.png "DenseNet")
+<div align="center" markdown="1">
+*Figure 3: A 5-layered Dense Block with Growth Rate = 4. Transition w/o Pooling layer is applied to the end of the Dense Block in DSOD*
+</div>
 
-Figure 3: A 5-layered Dense Block with Growth Rate = 4. Transition w/o Pooling layer is applied to the end of the Dense Block in DSOD
 ### Stem block
 A stem block is used to modify the original DenseNet architecture. Instead of a using a 7x7 convolution layer with stride 2 followed by a 3x3 MaxPooling operation with stride 2, DSOD uses a stack of 3x3 convolution layers followed by a 2x2 MaxPooling. The first convolution layer has stride 2 whereas the others use stride 1. This is to minimise information loss from the raw input image, as smaller filter sizes and strides tend to preserve information.
 ### Dense Prediction Structure
 To improve detection accuracy, DSOD concatenates feature maps processed from previous layers with down-sampled, high-resolution feature maps in a one-to-one ratio for detection. This is because the high-resolution feature maps preserves spatial information, whereas processed feature maps from previous layers have information useful for classification.
 In comparison, SSD uses only feature maps processed from previous layers to make multi-scale detection.
 
-Figure 3: Plain Connection in SSD vs Dense Connection in DSOD. In each scale, SSD learns all of the feature maps using convolution layers from previous scales. DSOD on the other hand down-samples feature maps from previous scale and concatenates them with the learned feature maps.
+![DSOD](../imgs/DSOD/DSOD.png "DSOD")
+<div align="center" markdown="1">
+*Figure 4: Plain Connection in SSD vs Dense Connection in DSOD. In each scale, SSD learns all of the feature maps using convolution layers from previous scales. DSOD on the other hand down-samples feature maps from previous scale and concatenates them with the learned feature maps.*
+</div>
+
 The down-sampling operation is done using a 2x2 max pooling layer with stride 2 followed by a 1x1 convolution layer with stride 1. This operation provides each scale with down-sampled feature maps from all of the previous scales, which is essentially the same as the dense layer-wise connection introduced in DenseNet, hence its name.
 ## Overall Architecture
 Due to the use of DenseNet-like architecture, DSOD has a few additional hyperparameters to tune. These include:
