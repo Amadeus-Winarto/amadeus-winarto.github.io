@@ -41,7 +41,7 @@ A stem block is used to modify the original DenseNet architecture. Instead of a 
 To improve detection accuracy, DSOD concatenates feature maps processed from previous layers with down-sampled, high-resolution feature maps in a one-to-one ratio for detection. This is because the high-resolution feature maps preserves spatial information, whereas processed feature maps from previous layers have information useful for classification.
 In comparison, SSD uses only feature maps processed from previous layers to make multi-scale detection.
 
-![DSOD](../imgs/DSOD/DSOD.png "DSOD")
+![DeepSupervision](../imgs/DSOD/DeepSupervision.png "DeepSupervision")
 <div align="center" markdown="1">
 *Figure 4: Plain Connection in SSD vs Dense Connection in DSOD. In each scale, SSD learns all of the feature maps using convolution layers from previous scales. DSOD on the other hand down-samples feature maps from previous scale and concatenates them with the learned feature maps.*
 </div>
