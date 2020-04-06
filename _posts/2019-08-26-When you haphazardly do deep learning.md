@@ -22,7 +22,7 @@ So that was something I wasn’t aware of during the competition.
 
 The task was simple enough to understand. The data set consisted of 11 classes of different human poses such as ‘HulkSmash’ or ‘ChairPose’. Strange naming aside, each class had around 90+ training images and 15+ validation images. We had one week to prepare our model, and it would be tested on a separate, withheld test set.
 
-![BigData](../imgs/WhenYouDoDL/BigData.JPEG "BigData")
+![BigData](../imgs/WhenYouDoDL/BigData.jpeg "BigData")
 <div align='center' markdown='1'>
   *Figure 2: Totally representative graph I took online*
 </div>
@@ -38,7 +38,7 @@ But this magic is deceptively simple. Gradient descent (GD) can be used to optim
 
 Sadly optimising these hyperparameters can be rather difficult. There are of course default values out there. Keras for example sets learning rate to 0.1 by default for the Stochastic Gradient Descent algorithm. But these default values are really only suggestions. Values that the creators of the algorithm found to be helpful and values that you need can be close, or they can be ridiculously different.
 
-![Hyperparameter](../imgs/WhenYouDoDL/Hyperparameter.png "Hyperparameter")
+![Hyperparameter](../imgs/WhenYouDoDL/Hyper.png "Hyperparameter")
 <div align='center' markdown='1'>
   *Figure 3: Google image search really is amazing*
 </div>
