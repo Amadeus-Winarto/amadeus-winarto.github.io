@@ -17,6 +17,7 @@ RSSD seeks to improve the feature pyramid by concatenating different feature map
 </div>
 
 As shown in figure 1, the additional feature maps with a different color after every layer (e.g. orange in layer 2, yellow in layer 3, etc) refers to feature maps produced after feature maps from previous layers undergo convolution. The feature maps with the same color as those in the previous layers (e.g. red in layer 2, red + orange in layer 3, etc) refers to feature maps produced after previous feature maps are down-sampled through pooling.
+
 Secondly, smaller feature maps can be up-sampled via deconvolutions to be concatenated with bigger feature maps. For example, feature maps of size 30 x 30 can undergo convolution to form 15 x 15 feature maps. The 15 x 15 feature maps can then undergo deconvolution to form a different set of 30 x 30 feature maps, which are then concatenated along with the original 30 x 30 feature maps. Figure 2 shows how this can be achieved in SSD-based methods.
 
 ![Concatenation with Deconvolution](../imgs/FSSD_RSSD/ConcatDeconv.png "ConcatDeconv")
@@ -24,6 +25,7 @@ Secondly, smaller feature maps can be up-sampled via deconvolutions to be concat
 *Figure 2: Concatenation via Deconvolution in SSD-based Detectors*
 </div>
 Referring to figure 2, the ‘red’ feature map is the first feature map. It undergoes convolution to generate the smaller ‘orange’ feature map, which also undergoes convolution to generate the even smaller ‘yellow’ feature map, and so on until the smallest ‘purple’ feature map is obtained. Then, it undergoes deconvolution to obtain the bigger ‘purple’ feature map. The ‘blue’ and ‘big purple’ feature maps are then concatenated before undergoing deconvolution and concatenation with the ‘green’ feature maps. This process repeats until the ‘red’ feature map is concatenated with the deconvolutioned feature maps.
+
 The “rainbow” in RSSD refers to the way it concatenates feature maps: through both pooling and deconvolution, thus leading to a colorful visual representation of RSSD.
 
 ![Rainbow Concatenation](../imgs/FSSD_RSSD/RainbowConcat.png "RainbowConcat")
@@ -31,12 +33,16 @@ The “rainbow” in RSSD refers to the way it concatenates feature maps: throug
 *Figure 3: Rainbow Concatenation in RSSD*
 </div>
 This increases the number of feature maps per scale which can be used to predict the labels and positions of objects. Furthermore, the number of feature maps in each layer of the pyramid is the same, allowing for a shared classifier between all scales.
+
 RSSD achieves higher performance compared to conventional SSD. For image size 300 x 300 with PASCAL VOC2007+2012 as training data, RSSD was able to get 78.5% mAP at 35.0 frame per second. In comparison, SSD300 achieved 77.7% at 61.1 fps, and I-SSD achieved 78.1% at 26.9 fps. The authors noted that using concatenation by pooling or deconvolution alone causes RSSD to perform worse than SSD.
 
 # Feature-fusion SSD
 The idea behind FSSD is simple: find a way to balance between semantic and positional information. This is because while less care can be afforded for bigger objects, small objects require deliberate architectural design to be detected.
+
 Consider a 300 x 300 image. A small object of size 10 x 10 would have features of size 1 x 1 when the feature map is of size 30 x 30. Thus, the moment the feature map size drops below this, the small object would not be detected.
+
 In comparison, a big object of size 100 x 100 would have features of size 10 x 10 in a 30 x 30 feature map. Even when the feature maps are processed and down-sampled to 5 x 5, the big object would still be detectable.
+
 Because SSD uses multiple feature maps of different scales to detect different objects, small objects need to be detected early on when the feature maps are still big enough i.e. positional information is not lost too much. However, big feature maps also mean that they are much earlier in the architecture and is thus not processed enough (Figure 3). This means that they may lack enough semantic information to be useful in predicting the small objects’ classes .
 
 ![SSD](../imgs/FSSD_RSSD/SSD.png "SSD")
