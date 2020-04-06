@@ -11,7 +11,10 @@ Alas, we lost in the competition, ranking fourth and missing the much needed cas
 # 1. Data is Everything
 This is one of the things that pros find obvious but others find bewildering. The advancement in neural network architecture has been impressive. In the computer vision realm, it began with AlexNet and has not ended ever since. Currently the State of the Art, as far as I am aware, is EfficientNet:
 
-Figure 1: Such accuracy, much wow
+![EfficientNet](../imgs/WhenYouDoDL/EfficientNet.png "EfficientNet")
+<div align='center' markdown='1'>
+  *Figure 1: Such accuracy, much wow*
+</div>
 
 With that kind of performance improvements due to architectural innovations, it’s easy to fall into the the trap of thinking that architecture is everything. Yet ultimately, deep learning is by nature data hungry, and one stands to gain a lot by simply cleaning whatever data one already have and increasing the amount of data.
 
@@ -19,7 +22,10 @@ So that was something I wasn’t aware of during the competition.
 
 The task was simple enough to understand. The data set consisted of 11 classes of different human poses such as ‘HulkSmash’ or ‘ChairPose’. Strange naming aside, each class had around 90+ training images and 15+ validation images. We had one week to prepare our model, and it would be tested on a separate, withheld test set.
 
-Figure 2: Totally representative graph I took online
+![BigData](../imgs/WhenYouDoDL/BigData.JPEG "BigData")
+<div align='center' markdown='1'>
+  *Figure 2: Totally representative graph I took online*
+</div>
 
 Obviously 90+ training images per class is not enough to train a ResNet50 from scratch, so our instincts told us to do transfer learning and data augmentation. But really, transfer learning and data augmentation can only do so much. We opted to do photometric and geometric transformations to the images provided, but we were still faced with the over-fitting problem. This could be due to certain similarities within a class and differences between classes that are not the distinctive features which would accurately separate the classes and help in generalisation. As an example, if all the people which posed the ‘HulkSmash’ wore red shirts and all the people which posed the ‘ChairPose’ wore green shirts, then the network might have been looking out for red vs green instead of actually learning about the pose. Of course this was not actually the case, and anyway we also did some color-based transformations to the images, but the idea remains true.
 
@@ -32,8 +38,10 @@ But this magic is deceptively simple. Gradient descent (GD) can be used to optim
 
 Sadly optimising these hyperparameters can be rather difficult. There are of course default values out there. Keras for example sets learning rate to 0.1 by default for the Stochastic Gradient Descent algorithm. But these default values are really only suggestions. Values that the creators of the algorithm found to be helpful and values that you need can be close, or they can be ridiculously different.
 
-Image result for hyperparameter tuning
-Figure 3: Google image search really is amazing
+![Hyperparameter](../imgs/WhenYouDoDL/Hyperparameter.png "Hyperparameter")
+<div align='center' markdown='1'>
+  *Figure 3: Google image search really is amazing*
+</div>
 
 Relying on default values and hoping it will give the best results is really like flipping 100 coins and pray all 100 will be heads. It is improbable and unlikely to be productive. Haphazardly inputting values might also lead to zero or even negative work done. The key is to be principled in the search.
 
@@ -42,13 +50,17 @@ Some common methods out there include grid search, random search, and bayesian o
 Random search is similar to grid search, except that you randomly sample for values between the lower and upper bound, without needing to define the step size. One can assume that any values within the two bounds have equal probability of being the right value, so you can sample from a uniform distribution. Another way is to pre-define the sampling distribution to be gaussian in nature. This is based on the intuitive assumption that as one gets closer to the optimal value the results would increase. As one deviates further from the optimal value in any direction however the results should decrease. The mean of the gaussian distribution to be sampled from can be set to the suggested or default value, whereas the standard deviation can be set such that mean + 3 standard deviations give the upper bound and mean - 3 standard deviations give the lower bound. (+-3 sigma)
 
 Bayesian optimisation takes this idea even further. I won’t discuss it here — my understanding of bayesian probability is quite shaky, but BO is said to be better than grid and random search. If you don’t understand anything here you can always just copy and paste code from sklearn (but try not to though).
+
 # 3. Ensembling
 
 This is probably the holy grail of Kagglers, and the bane of those who seek fast inference. Ensembling is a technique which dates back to the age of machine learning without neural networks — the key idea is to utilise different learning algorithms with different ability and somehow combine them to obtain a superior model with better generalisation to unseen data.
 
 It lies on the assumption that searching for the single best model available out of all the possible models out there is intractable. This is also related to the fact that the gradient descent algorithm only allows us to search for models which lie at the local minimum of the loss function’s landscape, and this landscape is non-convex and thus the local minimum is not the global minimum. If this sounds like Marsian to you, see the figure below.
 
-Figure 4: The left image shows a convex function. The right image shows a non-convex function. The z-axis represents the value of the loss function, while the x and y axis represents the parameters of the model.
+![Convex Function](../imgs/WhenYouDoDL/Convex.jpg "Convex Function")
+<div align='center' markdown='1'>
+*Figure 4: The left image shows a convex function. The right image shows a non-convex function. The z-axis represents the value of the loss function, while the x and y axis represents the parameters of the model.*
+</div>
 
 Imagine a heavy ball placed on a metallic sheet shaped like the convex function shown on Fig. 4. It’s easy to see that, upon releasing the ball, it will always travel to the same location on the sheet, regardless of the initial position of the ball. This is what it means to be convex (again, not the most rigorous of definitions, but it works). On the other hand, the same ball released on a metallic sheet shaped like the left image in Fig.4 would land on different locations depending on the initial position of the ball. The ball will always land on a point which is a local minimum (a valley), but there are no guarantees in place on whether this local minimum is the global minimum (whether the valley is the deepest valley).
 
