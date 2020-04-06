@@ -1,6 +1,6 @@
 ---
 layout: posts
-title: Variations of SSD — Deeply Supervised Object Detector (DSOD)
+title: Variations of SSD— Feature-Fusion SSD (FSSD) and Rainbow SSD (RSSD)
 ---
 # Variations of SSD: Feature-Fusion SSD (FSSD) and Rainbow SSD (RSSD)
 While single-stage detectors such as Single-shot MultiBox Detectors (SSD) are generally faster than two-stage detectors like Faster R-CNN (FR-CNN), they are usually less accurate in their detection. This can be easily seen when the objects in question are small; SSD-based methods typically achieve much lower mean Average Precision (mAP) scores than FR-CNN-based methods. Several remedies have been proposed, including the addition of deconvolutional layers, as used in Deconvolutional SSD.
