@@ -10,8 +10,8 @@ Alas, we lost in the competition, ranking fourth and missing the much needed cas
 
 # 1. Data is Everything
 This is one of the things that pros find obvious but others find bewildering. The advancement in neural network architecture has been impressive. In the computer vision realm, it began with AlexNet and has not ended ever since. Currently the State of the Art, as far as I am aware, is EfficientNet:
-<div align='center' markdown='1'>
-![EfficientNet](../imgs/WhenYouDoDL/EfficientNet.png "EfficientNet")
+<div style="text-align:center">
+ <img src="../imgs/WhenYouDoDL/EfficientNet.png" alt="EfficientNet">
 </div>
 <div align='center' markdown='1'>
   *Figure 1: Such accuracy, much wow*
