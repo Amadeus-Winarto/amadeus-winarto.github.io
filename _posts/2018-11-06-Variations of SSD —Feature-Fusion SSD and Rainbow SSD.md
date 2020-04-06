@@ -50,20 +50,25 @@ FSSD thus tries to combine the positional information of earlier feature maps wi
 *Figure 5a shows a simplified sketch of the SSD architecture. Figure 5b shows a simplified sketch of FSSD as well as how the Feature-Fusion module works.*
 </div>
 To maximise the utility of the feature-fusion module, the authors conducted ablation studies into the following:
-Range of layers to be fused
-Feature fusion: concatenation or element-wise summation
-Normalize feature value or not
-Pyramid feature extractor design
+- Range of layers to be fused
+- Feature fusion: concatenation or element-wise summation
+- Normalize feature value or not
+- Pyramid feature extractor design
 The results are as follows:
-Conv4_3, fc_7 and conv7_2 should be fused (Assuming VGG16 backbone)
-Concatenation for feature fusion
-Batch Normalization
-Pyramid feature extraction should utilise simple blocks, each having a 3 x 3 Conv followed by a ReLU, followed by concatenation. Fused feature maps should not be used for prediction directly
+- Conv4_3, fc_7 and conv7_2 should be fused (Assuming VGG16 backbone)
+- Concatenation for feature fusion
+- Batch Normalization
+- Pyramid feature extraction should utilise simple blocks, each having a 3 x 3 Conv followed by a ReLU, followed by concatenation. Fused feature maps should not be used for prediction directly
+
 The simplicity of this approach is striking. It takes the intuition of feature fusion and works on it through the simple method of convolution followed by concatenation. The improvements it brings to conventional SSD is also remarkable. When trained on PASCAL VOC 2007 trainval and test + PASCAL VOC 2012 trainval + MSCOCO dataset, FSSD300 achieves 82.0% mAP, higher than conventional SSD300 or DSOD300 (79.3%). FSSD512 manage to reach 84.2%, higher than even Faster R-CNN (ResNet-101) at 83.8%.
+
 Furthermore, Light FSSD300 (Mobilenet) was able to achieve higher mAP than Mobilenet SSD300 on MSCOCO minival2014. This shows its potential for embedded devices.
+
 However, a ResNet-based FSSD was not used by the authors of the paper. Thus, it is difficult to compare to other methods that uses ResNet as its backbone, such as DSOD or DSSD.
-Conclusion
+
+# Conclusion
 As shown by FSSD and RSSD, it appears that single-stage detectors can also benefit from an improved feature pyramid through the different processing of feature maps and its concatenation before prediction. This may open up more possibilities into building better and faster object detectors.
-References
-Jeong, Jisoo, Hyojin Park and Nojun Kwak. “Enhancement of SSD by concatenating feature maps for object detection.” CoRR abs/1705.09587 (2017): n. pag.
-Li, Zuoxin and Fuqiang Zhou. “FSSD: Feature Fusion Single Shot Multibox Detector.” CoRR abs/1712.00960 (2017): n. pag.
+
+#References
+- Jeong, Jisoo, Hyojin Park and Nojun Kwak. “Enhancement of SSD by concatenating feature maps for object detection.” CoRR abs/1705.09587 (2017): n. pag.
+- Li, Zuoxin and Fuqiang Zhou. “FSSD: Feature Fusion Single Shot Multibox Detector.” CoRR abs/1712.00960 (2017): n. pag.
