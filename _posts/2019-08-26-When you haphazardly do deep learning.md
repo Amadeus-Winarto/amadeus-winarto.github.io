@@ -22,8 +22,9 @@ With that kind of performance improvements due to architectural innovations, it�
 So that was something I wasn’t aware of during the competition.
 
 The task was simple enough to understand. The data set consisted of 11 classes of different human poses such as ‘HulkSmash’ or ‘ChairPose’. Strange naming aside, each class had around 90+ training images and 15+ validation images. We had one week to prepare our model, and it would be tested on a separate, withheld test set.
-
-![BigData](../imgs/WhenYouDoDL/BigData.jpeg "BigData")
+<div style="text-align:center">
+ <img src="../imgs/WhenYouDoDL/BigData.jpeg" alt="BigData">
+</div>
 <div align='center' markdown='1'>
   *Figure 2: Totally representative graph I took online*
 </div>
@@ -38,8 +39,9 @@ The magick of gradient descent and backpropagation is amazing indeed. Explaining
 But this magic is deceptively simple. Gradient descent (GD) can be used to optimize the parameters of the function, which would be a and b in the above function, to minimise a certain loss/cost function. GD also works for a lot of different kinds of functions, not just linear ones, and can be used in conjunction with any kind of differentiable loss function. But right from the outset one can see that the GD algorithm itself has parameters which can affect the generalisation ability of the trained neural network. Things such as the loss function, batch size, learning rate and more are some of the parameters which we need to set to use the GD algorithm. And these parameters, otherwise known as ‘Hyperparameters’ to differentiate it from the weights and biases (parameters) of the neural network, also need to be optimised.
 
 Sadly optimising these hyperparameters can be rather difficult. There are of course default values out there. Keras for example sets learning rate to 0.1 by default for the Stochastic Gradient Descent algorithm. But these default values are really only suggestions. Values that the creators of the algorithm found to be helpful and values that you need can be close, or they can be ridiculously different.
-
-![Hyperparameter](../imgs/WhenYouDoDL/Hyper.png "Hyperparameter")
+<div style='text-align:center'>
+ <img src = "../imgs/WhenYouDoDL/Hyper.png" alt="Hyperparameter">
+</div>
 <div align='center' markdown='1'>
   *Figure 3: Google image search really is amazing*
 </div>
