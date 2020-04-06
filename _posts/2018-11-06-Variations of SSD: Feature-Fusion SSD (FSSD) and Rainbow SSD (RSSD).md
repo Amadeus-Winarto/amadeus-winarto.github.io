@@ -4,8 +4,11 @@ title: Variations of SSD: Feature-Fusion SSD (FSSD) and Rainbow SSD (RSSD)
 ---
 # Variations of SSD: Feature-Fusion SSD (FSSD) and Rainbow SSD (RSSD)
 While single-stage detectors such as Single-shot MultiBox Detectors (SSD) are generally faster than two-stage detectors like Faster R-CNN (FR-CNN), they are usually less accurate in their detection. This can be easily seen when the objects in question are small; SSD-based methods typically achieve much lower mean Average Precision (mAP) scores than FR-CNN-based methods. Several remedies have been proposed, including the addition of deconvolutional layers, as used in Deconvolutional SSD.
+
 Rainbow SSD seeks to “combine” feature maps to give better predictions. The rationale is that by combining feature maps, the network can fully make use of the relationships between layers in the feature pyramid. It does this by processing the different feature maps in various ways and then concatenating them before prediction.
+
 Feature-fusion SSD is another attempt to solve the small object detection problem. The feature-fusion module in FSSD essentially “fuses” all the feature maps from different scales to form new feature maps. The new feature maps are then used to predict the label and position of the objects to be detected.
+
 # Rainbow SSD
 RSSD seeks to improve the feature pyramid by concatenating different feature maps. There are two way in which this can be done. Firstly, bigger feature maps can be down-sampled via pooling to be concatenated with smaller feature maps. For example, feature maps of size 30 x 30 can undergo convolution to make a set of 15 x 15 feature maps. The 30 x 30 feature maps are then down-sampled through pooling operations to from another set of 15 x 15 feature maps. The two sets of 15 x 15 feature maps are then concatenated together Figure 1 shows how this can be used in the context of SSD.
 
