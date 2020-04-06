@@ -60,6 +60,7 @@ To maximise the utility of the feature-fusion module, the authors conducted abla
 - Feature fusion: concatenation or element-wise summation
 - Normalize feature value or not
 - Pyramid feature extractor design
+
 The results are as follows:
 - Conv4_3, fc_7 and conv7_2 should be fused (Assuming VGG16 backbone)
 - Concatenation for feature fusion
