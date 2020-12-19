@@ -6,13 +6,13 @@ function RenderNotesItem({ post }){ //<CardImg width="100%" src={dish.image} alt
   return  <Card>
             <CardBody>
             <Link to={`/posts/${post.id}`}>
-              <CardTitle tag="h4">{post.name}</CardTitle>
+              <CardTitle tag="h4" className="mb-2">{post.name}</CardTitle>
               <div style={{'text-align' : "center"}}>
               <img width="50%" src={post.image} alt=""></img>
               </div>
               
             </Link>
-              <CardSubtitle>{new Date(post.date).toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"})}</CardSubtitle> 
+              <CardSubtitle> <i className="fa fa-calendar" /> Published : {new Date(post.date).toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"})}</CardSubtitle> 
               <CardText>{post.description}</CardText>
               </CardBody>
           </Card> ;
@@ -32,7 +32,7 @@ function Notes (props) {
       <div className="row">
         <Breadcrumb>
           <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-          <BreadcrumbItem active>Posts</BreadcrumbItem>
+          <BreadcrumbItem active>Blog Posts</BreadcrumbItem>
         </Breadcrumb>
         <div className="col-12">
           <h3>Posts</h3>

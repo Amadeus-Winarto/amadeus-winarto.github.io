@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 class Blog extends React.Component{
     constructor(props){
         super(props);
-
         this.state = {  path : "/assets/posts/".concat(this.props.post.id.toString(), ".md"), 
                         content : null,
                         renderers : {

@@ -38,7 +38,7 @@ class Header extends React.Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/posts">
-                                        <span className="fa fa-sticky-note fa-lg"></span> Posts
+                                        <span className="fa fa-sticky-note fa-lg"></span> Blog Posts
                                     </NavLink>
                                 </NavItem>
                             </Nav>

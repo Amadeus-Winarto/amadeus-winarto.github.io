@@ -40,5 +40,13 @@ export const POSTS =
         category: 'General',
         date:'2020-12-01',
         featured: false,
+        },
+        {
+        id: 5,
+        name:'A Look at the Halting Problem',
+        image: '',
+        category: 'General',
+        date:'2020-12-20',
+        featured: false,
         }
     ];
