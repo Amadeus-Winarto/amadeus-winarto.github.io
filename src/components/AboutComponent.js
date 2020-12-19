@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, CardBody, CardSubtitle, CardText } from 'reactstrap';  
-import { Link } from 'react-router-dom';
+import { Card, CardTitle, CardBody, CardSubtitle, CardText } from 'reactstrap';  
 
 function RenderIntro(){
   return  <Card>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem, CardBody, CardSubtitle, CardText } from 'reactstrap';  
+import { Card, CardTitle, Breadcrumb, BreadcrumbItem, CardBody, CardSubtitle, CardText } from 'reactstrap';  
 import { Link } from 'react-router-dom';
 
 function RenderNotesItem({ post }){ //<CardImg width="100%" src={dish.image} alt={dish.name} />
