@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardTitle, Breadcrumb, BreadcrumbItem, CardBody, CardSubtitle, CardText } from 'reactstrap';  
 import { Link } from 'react-router-dom';
 
-function RenderNotesItem({ post }){ //<CardImg width="100%" src={dish.image} alt={dish.name} />
+function RenderEachPost({ post }){ //<CardImg width="100%" src={dish.image} alt={dish.name} />
   return  <Card>
             <CardBody>
             <Link to={`/posts/${post.id}`}>
@@ -18,11 +18,11 @@ function RenderNotesItem({ post }){ //<CardImg width="100%" src={dish.image} alt
           </Card> ;
 }
 
-function Notes (props) {
+function Posts (props) {
   const menu = props.posts.map((post) => {
     return (
       <div key = {post.id} className="col-12 col-md-12 m-1">
-        <RenderNotesItem post={ post }/>
+        <RenderEachPost post={ post }/>
       </div>
       );
   }).reverse(); // Prob not a good strategy, but this will do now
@@ -32,7 +32,7 @@ function Notes (props) {
       <div className="row">
         <Breadcrumb>
           <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-          <BreadcrumbItem active>Blog Posts</BreadcrumbItem>
+          <BreadcrumbItem active>Posts</BreadcrumbItem>
         </Breadcrumb>
         <div className="col-12">
           <h3>Posts</h3>
@@ -46,4 +46,4 @@ function Notes (props) {
   );
 }
 
-export default Notes;
+export default Posts;

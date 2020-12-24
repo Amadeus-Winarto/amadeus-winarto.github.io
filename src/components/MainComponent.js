@@ -1,8 +1,7 @@
 import React from 'react';
-import Home from './HomeComponent';
-import Notes from './NotesComponent';
+import Posts from './PostsComponent';
 import Header from './HeaderComponent';
-import About from './AboutComponent';
+import Home from './HomeComponent';
 import Blog from './BlogComponent';
 import { POSTS } from '../shared/posts';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -24,9 +23,8 @@ class Main extends React.Component {
       return  <div>
                   <Header />
                   <Switch>
-                  <Route path="/home" component={() => <Home />} />
-                  <Route path="/about" component={() => <About />} />
-                  <Route exact path="/posts" component={() => <Notes posts={this.state.posts}/>} />
+                  <Route path="/home" component={() => <Home posts={this.state.posts}/>} />
+                  <Route exact path="/posts" component={() => <Posts posts={this.state.posts}/>} />
                   <Route path="/posts/:postId" component={PostWithId} />
                   <Redirect to="/home" />
               </Switch>

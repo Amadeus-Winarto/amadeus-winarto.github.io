@@ -32,25 +32,14 @@ class Header extends React.Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/about">
-                                        <span className="fa fa-address-card fa-lg"></span> About Me
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
                                     <NavLink className="nav-link" to="/posts">
-                                        <span className="fa fa-sticky-note fa-lg"></span> Blog Posts
+                                        <span className="fa fa-sticky-note fa-lg"></span> Posts
                                     </NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>
                     </div>
                 </Navbar>
-                <Jumbotron className="jumbotron-fluid">
-                    <div className="container">
-                        <h1 className="display-4">AHOI, PEEPS!</h1>
-                        <h2 className="lead">Welcome to My Personal Website!</h2>
-                    </div>
-                </Jumbotron>
             </React.Fragment>
         );
     }

@@ -6,7 +6,7 @@ export const POSTS =
         image: '/assets/imgs/DSSD/Overall.png',
         category: 'Computer Vision',
         date:'2018-08-25',
-        featured: true,
+        featured: false,
         link: '/assets/posts/0.md',
         },
         {
@@ -39,14 +39,14 @@ export const POSTS =
         image: '/assets/imgs/FP/functions.jpeg',
         category: 'General',
         date:'2020-12-01',
-        featured: false,
+        featured: true,
         },
         {
         id: 5,
         name:'A Look at the Halting Problem',
-        image: '',
+        image: '/assets/imgs/Halt/Halt.jpg',
         category: 'General',
         date:'2020-12-20',
-        featured: false,
+        featured: true,
         }
     ];
